@@ -1,5 +1,5 @@
 <?php
-if(!class_exists('EntityTypes')){
+/*if(!class_exists('EntityTypes')){
     abstract class EntityTypes
     {
         const coaches = 'c';
@@ -12,7 +12,7 @@ if(!class_exists('VehicleNumberFormats')){
         const long = 'l';
         const short = 's';
     }
-}
+}*/
 function smarty_modifier_format_vehicle_numbers($num, $vehiclekeepermarking = 'NS', $country = 'NL', $type = EntityTypes::coaches, $format = VehicleNumberFormats::long){
     if(!isset($num)){
         trigger_error("format_vehicle_numbers: param 'num' missing");
