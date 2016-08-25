@@ -1,6 +1,6 @@
 {
-	"name": "erayan/format-vehicle-numbers",
-	"description": "Plugin to help format rail vehicle numbers (NS)",
+	"name": "erayan/smarty-format-vehicle-numbers",
+	"description": "Smarty plugin to help format rail vehicle numbers (NS)",
 	"homepage": "https://github.com/EraYaN/smarty-format-vehicle-numbers",
 	"license": "LGPL-2.1+",
 	"authors": [
