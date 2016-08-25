@@ -1,0 +1,26 @@
+{
+	"name": "erayan/format-vehicle-numbers",
+	"description": "Plugin to help format rail vehicle numbers (NS)",
+	"homepage": "https://github.com/EraYaN/smarty-format-vehicle-numbers",
+	"license": "LGPL-2.1+",
+	"authors": [
+		{
+			"name": "Erwin de Haan",
+			"email": "git@erayan.com"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/EraYaN/smarty-format-vehicle-numbers/issues"
+	},
+	"autoload": {
+		"files": [
+			"modifier.format_vehicle_numbers.php"
+		]
+	},
+	"require": {
+		"php": "~5.3|~7.0"
+	},
+	"require-dev": {
+		"smarty/smarty": "3.1.*"
+	}
+}
