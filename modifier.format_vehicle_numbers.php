@@ -23,28 +23,33 @@ function smarty_modifier_format_vehicle_numbers($num, $vehiclekeepermarking = 'N
     $formats[EntityTypes::locomotives][VehicleNumberFormats::long] = '%s %s %s %s %s %s-%s';
     $formats[EntityTypes::coaches][VehicleNumberFormats::short] = '%s-%s';
     $formats[EntityTypes::locomotives][VehicleNumberFormats::short] = 'E%s-%s';
-
+	$len = strlen($num);
     $args = array();
     if($format==VehicleNumberFormats::short){
         if($type==EntityTypes::coaches){
-            if(strlen($num)!=5){
+            if($len!=5){
                 //trigger_error("format: 'num' not properly formatted");
                 return $vehiclekeepermarking.' '.$country.' '.$num;
             }
             $args[] = mb_substr($num,0,2);
             $args[] = mb_substr($num,2,3);
         } else if($type==EntityTypes::locomotives){
-            if(strlen($num)!=6){
+            if($len!=6||$len!=7){
                 //trigger_error("format: 'num' not properly formatted");
                 return $vehiclekeepermarking.' '.$country.' '.$num;
             }
-            $args[] = mb_substr($num,0,3);
-            $args[] = mb_substr($num,3,3);
+			if($len==6){
+				$args[] = mb_substr($num,0,3);
+				$args[] = mb_substr($num,3,3);
+			} elseif($len==7){
+				$args[] = mb_substr($num,0,3);
+				$args[] = mb_substr($num,3,4);
+			}
         }
     } else if($format==VehicleNumberFormats::long){
         $args[] = $vehiclekeepermarking;
         $args[] = $country;
-        if(strlen($num)!=12){
+        if($len!=12){
             //trigger_error("format: 'num' not properly formatted");
             return $vehiclekeepermarking.' '.$country.' '.$num;
         }
