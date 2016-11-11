@@ -34,7 +34,7 @@ function smarty_modifier_format_vehicle_numbers($num, $vehiclekeepermarking = 'N
             $args[] = mb_substr($num,0,2);
             $args[] = mb_substr($num,2,3);
         } else if($type==EntityTypes::locomotives){
-            if($len!=6||$len!=7){
+            if($len!=6&&$len!=7){
                 //trigger_error("format: 'num' not properly formatted");
                 return $vehiclekeepermarking.' '.$country.' '.$num;
             }
