@@ -21,8 +21,10 @@ function smarty_modifier_format_vehicle_numbers($num, $vehiclekeepermarking = 'N
     $formats = array();
     $formats[EntityTypes::coaches][VehicleNumberFormats::long] = '%s %s %s %s %s-%s %s-%s';
     $formats[EntityTypes::locomotives][VehicleNumberFormats::long] = '%s %s %s %s %s %s-%s';
+    $formats[EntityTypes::cars][VehicleNumberFormats::long] = '%s %s %s %s-%s %s-%s';
     $formats[EntityTypes::coaches][VehicleNumberFormats::short] = '%s-%s';
     $formats[EntityTypes::locomotives][VehicleNumberFormats::short] = 'E%s-%s';
+    $formats[EntityTypes::cars][VehicleNumberFormats::short] = '%s%s';
 	$len = strlen($num);
     $args = array();
     if($format==VehicleNumberFormats::short){
@@ -33,7 +35,7 @@ function smarty_modifier_format_vehicle_numbers($num, $vehiclekeepermarking = 'N
             }
             $args[] = mb_substr($num,0,2);
             $args[] = mb_substr($num,2,3);
-        } else if($type==EntityTypes::locomotives){
+        } else if($type==EntityTypes::locomotives || $type==EntityTypes::cars){
             if($len!=6&&$len!=7){
                 //trigger_error("format: 'num' not properly formatted");
                 return $vehiclekeepermarking.' '.$country.' '.$num;
@@ -53,7 +55,7 @@ function smarty_modifier_format_vehicle_numbers($num, $vehiclekeepermarking = 'N
             //trigger_error("format: 'num' not properly formatted");
             return $vehiclekeepermarking.' '.$country.' '.$num;
         }
-        if($type==EntityTypes::coaches){
+        if($type==EntityTypes::coaches || $type==EntityTypes::cars){
             $args[] = mb_substr($num,0,2);
             $args[] = mb_substr($num,2,2);
             $args[] = mb_substr($num,4,2);
